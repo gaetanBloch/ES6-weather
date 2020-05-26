@@ -4,7 +4,8 @@
   "description": "ES5 Weather Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gaetanBloch/ES6-weather/issues"
   },
-  "homepage": "https://github.com/gaetanBloch/ES6-weather#readme"
+  "homepage": "https://github.com/gaetanBloch/ES6-weather#readme",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  }
 }
