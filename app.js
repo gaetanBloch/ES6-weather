@@ -13,7 +13,7 @@ const updateWeather = (weatherData) => {
   ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'none';
 };
 
-const fetchWeather = () => {
+const fetchWeather = async () => {
   const cityName = ELEMENTS.ELEMENT_SEARCHED_CITY.value.trim();
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
@@ -24,17 +24,20 @@ const fetchWeather = () => {
   ELEMENTS.ELEMENT_WEATHER_BOX.style.display = 'none';
   ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'block';
 
-  Http.fetchData(url)
-    .then(response => {
-      const weatherData = new WeatherData(
-        cityName,
-        response.weather[0].description.toUpperCase()
-      );
-      const weatherProxy = new Proxy(weatherData, WEATHER_PROXY_HANDLER);
-      weatherProxy.temperature = response.main.temp;
-      updateWeather(weatherProxy);
-    })
-    .catch(error => alert(error));
+  try {
+    const response = await Http.fetchData(url);
+    console.log(response);
+    const weatherData = new WeatherData(
+      response.name,
+      response.weather[0].description.toUpperCase()
+    );
+    const weatherProxy = new Proxy(weatherData, WEATHER_PROXY_HANDLER);
+    weatherProxy.temperature = response.main.temp;
+    updateWeather(weatherProxy);
+  } catch (error) {
+    ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'none';
+    alert(error);
+  }
 };
 
 ELEMENTS.ELEMENT_SEARCH_BUTTON.addEventListener('click', fetchWeather);
