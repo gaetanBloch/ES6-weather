@@ -1,0 +1,19 @@
+{
+  "name": "es6-weather",
+  "version": "1.0.0",
+  "description": "ES5 Weather Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaetanBloch/ES6-weather.git"
+  },
+  "author": "Gaëtan Bloch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaetanBloch/ES6-weather/issues"
+  },
+  "homepage": "https://github.com/gaetanBloch/ES6-weather#readme"
+}
