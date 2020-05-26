@@ -12,7 +12,10 @@ class Http {
             reject('Something went wrong');
           }
         }
-      }
-    }))
-  }
+      };
+      http.send();
+    }));
+  };
 }
+
+export default Http;
