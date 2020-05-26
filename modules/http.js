@@ -1,19 +1,19 @@
 class Http {
   static fetchData = (url) => {
+
+    const errorMessage = 'Something went wrong';
+
     return new Promise(((resolve, reject) => {
-      const http = new XMLHttpRequest();
-      http.open('GET', url);
-      http.onreadystatechange = () => {
-        if (http.readyState === XMLHttpRequest.DONE) {
-          if (http.status === 200) {
-            const responseData = JSON.parse(http.responseText);
+      fetch(url)
+        .then(response => response.json())
+        .then(responseData => {
+          if(responseData.cod === 200) {
             resolve(responseData);
           } else {
-            reject('Something went wrong');
+            reject(errorMessage);
           }
-        }
-      };
-      http.send();
+        })
+        .catch(() => reject(errorMessage));
     }));
   };
 }
