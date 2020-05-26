@@ -1,2 +1,2 @@
 # ES6-weather
-Weather application using ECMAScript6 (ES6) fundamentals
+Weather application using ECMAScript 6 (ES6) fundamentals
