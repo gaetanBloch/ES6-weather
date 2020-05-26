@@ -5,3 +5,11 @@ export class WeatherData {
     this.temperature = '';
   }
 }
+
+export const WEATHER_PROXY_HANDLER = {
+  get: (target, property) => Reflect.get(target, property),
+  set: (target, property, value) => {
+    const newValue = (value * 1.8 + 32).toFixed(2) + 'F.'
+    return Reflect.set(target, property, newValue);
+  }
+};
