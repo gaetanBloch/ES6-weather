@@ -10,6 +10,7 @@ const updateWeather = (weatherData) => {
   ELEMENTS.ELEMENT_WEATHER_TEMPERATURE.textContent = weatherData.temperature;
 
   ELEMENTS.ELEMENT_WEATHER_BOX.style.display = 'block';
+  ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'none';
 };
 
 const fetchWeather = () => {
@@ -19,6 +20,10 @@ const fetchWeather = () => {
   if (cityName.length === 0) {
     return alert('Please enter a city name');
   }
+
+  ELEMENTS.ELEMENT_WEATHER_BOX.style.display = 'none';
+  ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'block';
+
   Http.fetchData(url)
     .then(response => {
       const weatherData = new WeatherData(
